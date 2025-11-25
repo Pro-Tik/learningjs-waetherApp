@@ -1,90 +1,199 @@
-*{
+/*
+ * 1. Global Reset and Base Styles
+ * Using 'rem' for better accessibility and scaling.
+ */
+*, *::before, *::after {
     margin: 0;
     padding: 0;
-    font-family: 'Poppins',sans-serif;
-    box-sizing:border-box;
-}
-body{
-    background: #222;
+    box-sizing: border-box;
 }
 
-.card{
-    width: 90%;
-    max-width: 470px;
-    background: linear-gradient(135deg, #00feba,#5b548a);
-    color: #fff;
-    margin: 100px auto 0;
-    border-radius: 20px;
-    padding: 40px 35px;
-    text-align: center;
+:root {
+    /* Define base font size for easy 'rem' scaling (1rem = 16px) */
+    font-size: 16px;
 }
-.search{
+
+body {
+    background: #1e1e1e; /* Slightly darker background for better contrast */
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh; /* Ensure body takes full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align card towards the top */
+    padding: 2.5rem 1rem; /* Add padding for small screens */
+}
+
+/*
+ * 2. Card Styling - Main Container
+ * Using 'rem' and flexible margin/padding.
+ */
+.card {
+    width: 100%; /* Max width, but responsive */
+    max-width: 29.375rem; /* 470px converted to rem */
+    background: linear-gradient(135deg, #00feba, #5b548a);
+    color: #fff;
+    /* Centering logic moved to body, so we only need margin-top for spacing */
+    /* margin: 6.25rem auto 0; */
+    border-radius: 1.25rem; /* 20px converted to rem */
+    padding: 2.5rem 2.1875rem; /* 40px 35px converted to rem */
+    text-align: center;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2); /* Subtle professional shadow */
+}
+
+/*
+ * 3. Search Bar Styling
+ * Ensuring elements stack or flow well on different sizes.
+ */
+.search {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 1rem; /* Use gap for spacing instead of margin-right */
 }
-.search input{
-    border: 0;
-    outline: 0;
+
+.search input {
+    border: none; /* Changed 0 to none */
+    outline: none;
     background: #ebfffc;
     color: #555;
-    padding: 10px 25px;
-    height: 60px;
-    border-radius: 30px;
+    padding: 0.625rem 1.5625rem; /* 10px 25px converted to rem */
+    height: 3.75rem; /* 60px converted to rem */
+    border-radius: 1.875rem; /* 30px converted to rem */
     flex: 1;
-    margin-right: 16px;
-    font-size: 18px;
+    font-size: 1.125rem; /* 18px converted to rem */
+    transition: box-shadow 0.3s ease; /* Professional touch */
 }
-.search button{
-    border: 0;
-    outline: 0;
+
+.search input:focus {
+    box-shadow: 0 0 0.5rem rgba(0, 254, 186, 0.5); /* Focus effect */
+}
+
+.search button {
+    border: none;
+    outline: none;
     background: #ebfffc;
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    width: 3.75rem; /* 60px converted to rem */
+    min-width: 3.75rem; /* Ensure button doesn't shrink */
+    height: 3.75rem; /* 60px converted to rem */
     cursor: pointer;
+    transition: background 0.3s ease, transform 0.1s ease; /* Professional touch */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.search button img{
-    width: 16px;
+
+.search button:hover {
+    background: #d9f3f0;
 }
-.weather-icon{
-    width: 170px;
-    margin-top: 30px;
+
+.search button:active {
+    transform: scale(0.95);
 }
-weather h1{
-    font-size: 80px;
+
+.search button img {
+    width: 1rem; /* 16px converted to rem */
+}
+
+/*
+ * 4. Weather Display Styling
+ * Corrected the invalid 'weather' selector to a proper class (assuming it's .weather)
+ */
+.weather-icon {
+    width: 10.625rem; /* 170px converted to rem */
+    margin-top: 1.875rem; /* 30px converted to rem */
+}
+
+/* Assuming the parent element of h1/h2 is a div with class .weather */
+.weather h1 { 
+    font-size: 5rem; /* 80px converted to rem */
     font-weight: 500;
 }
-weather h2{
-    font-size: 45px;
+
+.weather h2 {
+    font-size: 2.8125rem; /* 45px converted to rem */
     font-weight: 400;
-    margin-top: -10px;
+    margin-top: -0.625rem; /* -10px converted to rem */
 }
-.details{
+
+/*
+ * 5. Details Section (Humidity and Wind)
+ * Responsive layout using flex and media queries.
+ */
+.details {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
-    margin-top: 50px;
+    padding: 0 1.25rem; /* 20px converted to rem */
+    margin-top: 3.125rem; /* 50px converted to rem */
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    gap: 1rem; /* Add gap for spacing on wrap */
 }
-.col{
+
+.col {
     display: flex;
     align-items: center;
     text-align: left;
+    min-width: 45%; /* Ensures columns can fit side-by-side */
 }
-.col img{
-    width: 40px;
-    margin-right: 10px;
+
+.col img {
+    width: 2.5rem; /* 40px converted to rem */
+    margin-right: 0.625rem; /* 10px converted to rem */
 }
-.humidity,.wind{
-    font-size: 28px;
-    margin-top: -6px;
+
+.humidity, .wind {
+    font-size: 1.75rem; /* 28px converted to rem */
+    font-weight: 500;
+    line-height: 1; /* Better alignment */
 }
-#feels{
-    margin-top: 10px;
+
+.details p {
+    font-size: 0.875rem; /* Label text size */
 }
-#error{
+
+/*
+ * 6. Specific and Error Styles
+ */
+/* Assuming 'feels' is a container/element for 'feels like' temperature */
+#feels { 
+    margin-top: 0.625rem; /* 10px converted to rem */
+}
+
+#error {
     text-align: left;
-    margin-top: 5px;
+    margin-top: 0.3125rem; /* 5px converted to rem */
+    color: #ff9999; /* Clear error color */
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/*
+ * 7. Media Queries for Responsiveness
+ * Adjustments for very small mobile screens (e.g., less than 350px width)
+ */
+@media (max-width: 350px) {
+    .card {
+        padding: 1.5rem 1rem;
+    }
+
+    .weather h1 {
+        font-size: 4rem; /* Smaller temp on very small screens */
+    }
+
+    .weather h2 {
+        font-size: 2rem; /* Smaller city name */
+        margin-top: -0.5rem;
+    }
+
+    .details {
+        flex-direction: column; /* Stack details vertically */
+        align-items: flex-start;
+        padding: 0;
+    }
+
+    .col {
+        min-width: 100%; /* Take full width when stacked */
+        margin-bottom: 1rem;
+    }
 }
