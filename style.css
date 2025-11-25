@@ -1,7 +1,4 @@
-/*
- * 1. Global Reset and Base Styles
- * Using 'rem' for better accessibility and scaling.
- */
+/* 1. Global Reset and Base Styles */
 *, *::before, *::after {
     margin: 0;
     padding: 0;
@@ -9,63 +6,55 @@
 }
 
 :root {
-    /* Define base font size for easy 'rem' scaling (1rem = 16px) */
+    /* Base font size for 'rem' calculation (1rem = 16px) */
     font-size: 16px;
 }
 
 body {
-    background: #1e1e1e; /* Slightly darker background for better contrast */
+    background: #1e1e1e; /* Professional darker background */
     font-family: 'Poppins', sans-serif;
-    min-height: 100vh; /* Ensure body takes full viewport height */
-    display: flex;
+    min-height: 100vh;
+    display: flex; /* Using flexbox for centering */
     justify-content: center;
-    align-items: flex-start; /* Align card towards the top */
-    padding: 2.5rem 1rem; /* Add padding for small screens */
+    align-items: center; /* Center vertically on large screens */
+    padding: 2.5rem 1rem;
 }
 
-/*
- * 2. Card Styling - Main Container
- * Using 'rem' and flexible margin/padding.
- */
 .card {
-    width: 100%; /* Max width, but responsive */
-    max-width: 29.375rem; /* 470px converted to rem */
+    width: 100%;
+    max-width: 29.375rem; /* ~470px using rem */
     background: linear-gradient(135deg, #00feba, #5b548a);
     color: #fff;
-    /* Centering logic moved to body, so we only need margin-top for spacing */
-    /* margin: 6.25rem auto 0; */
-    border-radius: 1.25rem; /* 20px converted to rem */
-    padding: 2.5rem 2.1875rem; /* 40px 35px converted to rem */
+    /* Removed margin: 100px auto 0; as body flex handles centering */
+    border-radius: 1.25rem;
+    padding: 2.5rem 2.1875rem;
     text-align: center;
-    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2); /* Subtle professional shadow */
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2); /* Professional shadow */
 }
 
-/*
- * 3. Search Bar Styling
- * Ensuring elements stack or flow well on different sizes.
- */
+/* 2. Search Bar Styling */
 .search {
     width: 100%;
     display: flex;
     align-items: center;
-    gap: 1rem; /* Use gap for spacing instead of margin-right */
+    gap: 1rem; /* Better spacing management */
 }
 
 .search input {
-    border: none; /* Changed 0 to none */
+    border: none;
     outline: none;
     background: #ebfffc;
     color: #555;
-    padding: 0.625rem 1.5625rem; /* 10px 25px converted to rem */
-    height: 3.75rem; /* 60px converted to rem */
-    border-radius: 1.875rem; /* 30px converted to rem */
+    padding: 0.625rem 1.5625rem;
+    height: 3.75rem;
+    border-radius: 1.875rem;
     flex: 1;
-    font-size: 1.125rem; /* 18px converted to rem */
-    transition: box-shadow 0.3s ease; /* Professional touch */
+    font-size: 1.125rem;
+    transition: box-shadow 0.3s ease; /* Professional polish */
 }
 
 .search input:focus {
-    box-shadow: 0 0 0.5rem rgba(0, 254, 186, 0.5); /* Focus effect */
+    box-shadow: 0 0 0.5rem rgba(0, 254, 186, 0.5);
 }
 
 .search button {
@@ -73,11 +62,11 @@ body {
     outline: none;
     background: #ebfffc;
     border-radius: 50%;
-    width: 3.75rem; /* 60px converted to rem */
-    min-width: 3.75rem; /* Ensure button doesn't shrink */
-    height: 3.75rem; /* 60px converted to rem */
+    width: 3.75rem;
+    min-width: 3.75rem;
+    height: 3.75rem;
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.1s ease; /* Professional touch */
+    transition: background 0.3s ease, transform 0.1s ease;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,47 +76,39 @@ body {
     background: #d9f3f0;
 }
 
-.search button:active {
-    transform: scale(0.95);
-}
-
 .search button img {
-    width: 1rem; /* 16px converted to rem */
+    width: 1rem;
 }
 
-/*
- * 4. Weather Display Styling
- * Corrected the invalid 'weather' selector to a proper class (assuming it's .weather)
- */
+/* 3. Weather Display Styling (Targeting H1/H2 inside .weather) */
 .weather-icon {
-    width: 10.625rem; /* 170px converted to rem */
-    margin-top: 1.875rem; /* 30px converted to rem */
+    width: 10.625rem;
+    margin-top: 1.875rem;
 }
 
-/* Assuming the parent element of h1/h2 is a div with class .weather */
+/* * FIX: Targeting h1 and h2 tags directly inside the .weather class.
+ * This replaces your original 'weather h1' which was an invalid selector.
+ */
 .weather h1 { 
-    font-size: 5rem; /* 80px converted to rem */
+    font-size: 5rem; /* ~80px using rem */
     font-weight: 500;
 }
 
 .weather h2 {
-    font-size: 2.8125rem; /* 45px converted to rem */
+    font-size: 2.8125rem; /* ~45px using rem */
     font-weight: 400;
-    margin-top: -0.625rem; /* -10px converted to rem */
+    margin-top: -0.625rem; /* ~-10px using rem */
 }
 
-/*
- * 5. Details Section (Humidity and Wind)
- * Responsive layout using flex and media queries.
- */
+/* 4. Details Section (Humidity and Wind) */
 .details {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 1.25rem; /* 20px converted to rem */
-    margin-top: 3.125rem; /* 50px converted to rem */
-    flex-wrap: wrap; /* Allow wrapping on small screens */
-    gap: 1rem; /* Add gap for spacing on wrap */
+    padding: 0 1.25rem;
+    margin-top: 3.125rem;
+    flex-wrap: wrap; /* ESSENTIAL for responsiveness: Allows columns to stack */
+    gap: 1rem;
 }
 
 .col {
@@ -138,40 +119,32 @@ body {
 }
 
 .col img {
-    width: 2.5rem; /* 40px converted to rem */
-    margin-right: 0.625rem; /* 10px converted to rem */
+    width: 2.5rem;
+    margin-right: 0.625rem;
 }
 
-.humidity, .wind {
-    font-size: 1.75rem; /* 28px converted to rem */
+/* FIX: Targeting both humidity class and the capitalized Wind class from your HTML */
+.humidity, .wind, .Wind { 
+    font-size: 1.75rem;
     font-weight: 500;
-    line-height: 1; /* Better alignment */
+    line-height: 1;
 }
 
-.details p {
-    font-size: 0.875rem; /* Label text size */
-}
-
-/*
- * 6. Specific and Error Styles
- */
-/* Assuming 'feels' is a container/element for 'feels like' temperature */
+/* 5. Specific and Error Styles */
 #feels { 
-    margin-top: 0.625rem; /* 10px converted to rem */
+    margin-top: 0.625rem;
+    font-size: 1rem;
 }
 
 #error {
     text-align: left;
-    margin-top: 0.3125rem; /* 5px converted to rem */
-    color: #ff9999; /* Clear error color */
+    margin-top: 0.3125rem;
+    color: #ff9999;
     font-size: 1rem;
     font-weight: 500;
 }
 
-/*
- * 7. Media Queries for Responsiveness
- * Adjustments for very small mobile screens (e.g., less than 350px width)
- */
+/* 6. Media Query for Small Screens */
 @media (max-width: 350px) {
     .card {
         padding: 1.5rem 1rem;
